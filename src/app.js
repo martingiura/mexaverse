@@ -36,8 +36,8 @@ connectDB()
 // })
 
 // Routes
-// // Home
-// app.use('/', require('./routes'))
+// Home
+app.use('/', require('./routes'))
 
 // // Login y signup
 // app.use('/auth', require('./routes/auth.router'))
@@ -50,3 +50,4 @@ connectDB()
 
 // Export
 module.exports = app
+

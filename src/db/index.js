@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 // function
 async function connectDB() {
-    await mongoose.connect(process.env.MONGODB, {
+    await mongoose.connect('mongodb://localhost:27017/mexaverse', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
