@@ -2,12 +2,14 @@ const Nft = require("./../models/Nft");
 const User = require("./../models/User");
 const mongoose = require("mongoose");
 
-exports.getNfts = async (req, res) => {
+//-----------------------VIEW MY NFTs-------------------
+
+exports.getMyNfts = async (req, res) => {
   try {
     const nfts = await Nft.find({});
     console.log(nfts);
-    res.render("nfts/index", {
-      nfts,
+    res.render("nfts/my-nfts", {
+      myNfts,
     });
   } catch (error) {
     console.log(error);
@@ -16,14 +18,14 @@ exports.getNfts = async (req, res) => {
 
 //-----------------------VIEW SINGLE NFT-------------------
 
-exports.getNft = async (req, res) => {
-  const singleNftID = req.params.NftID;
-  const getTheNft = await Nft.findById(singleNftID);
-  console.log(getTheNft);
-  res.render("nfts/single", {
-    data: getTheNft,
-  });
-};
+// exports.getNft = async (req, res) => {
+//   const singleNftID = req.params.NftID;
+//   const getTheNft = await Nft.findById(singleNftID);
+//   console.log(getTheNft);
+//   res.render("nfts/single", {
+//     data: getTheNft,
+//   });
+// };
 
 //-------------------Add a new NFT-------------------
 //-------------------VIEW FORM TO CREATE NFTs-------------------

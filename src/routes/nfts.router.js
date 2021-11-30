@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 const {
-  getNfts,
+  getMyNfts,
   viewCreateNft,
   createNft,
   viewEditNft,
@@ -13,7 +13,7 @@ const {
 const { isLoggedIn } = require("./../middlewares");
 
 //2. Routes
-router.get("/", isLoggedIn, getNfts);
+router.get("/nfts", isLoggedIn, getMyNfts);
 
 //-------------Add NFTs------------
 router.get("/create", viewCreateNft);
