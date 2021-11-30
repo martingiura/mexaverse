@@ -2,7 +2,7 @@
 // Import
 const router = require("express").Router()
 
-const home = require('./../controllers/index.js')
+const home = require('./../controllers')
 
 // Routes
 router.get('/', home)
