@@ -23,7 +23,7 @@ const nfts = [
 ];
 
 // Connect to db
-mongoose.connect(process.env.MONGODB);
+mongoose.connect("process.env.MONGODB");
 
 // Populate
 const generateNfts = async () => {

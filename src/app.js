@@ -7,7 +7,7 @@ require("dotenv/config");
 
 const path = require("path");
 
-const connectDB = require("./db");
+require("./db");
 
 const sessionManager = require("./config/session");
 
@@ -23,7 +23,7 @@ app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: true }));
 
 // Conect to Db
-connectDB();
+// connectDB();
 
 // Sessions
 sessionManager(app);

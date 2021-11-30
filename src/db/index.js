@@ -1,15 +1,23 @@
 // Importa
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 // function
-async function connectDB() {
-    await mongoose.connect('mongodb://localhost:27017/mexaverse', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
+const MONGODB_URI = process.env.MONGODB;
 
-    console.log(`Conectado a la base de datos`)
-}
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch((err) => {
+    console.error("Error connecting to mongo: ", err);
+  });
+
 // Export
 
-module.exports = connectDB
+// module.exports = connectDB;

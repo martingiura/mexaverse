@@ -18,15 +18,15 @@ router.get("/", isLoggedIn, getNfts);
 //-------------Add NFTs------------
 router.get("/create", viewCreateNft);
 
-router.post("/nfts/create", createNft);
+router.post("/create", createNft);
 
 //-------------Update NFTs-------------
-router.get("/nfts/:nftID/edit", viewEditNft);
+router.get("/:nftID/edit", viewEditNft);
 
-router.post("/nfts/:nftID/edit", editNft);
+router.post("/:nftID/edit", editNft);
 
 //-------------Delete NFTs-------------
-router.post("/nfts/:nftID/delete", deleteNft);
+router.post("/:nftID/delete", deleteNft);
 
 //3. EXPORT
 module.exports = router;
