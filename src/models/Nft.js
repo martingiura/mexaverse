@@ -11,9 +11,8 @@ const nftSchema = new Schema(
       required: [true, "NFT Title is required 🚨 "],
     },
     nftUsername: {
-      type: { type: Schema.Types.ObjectId, ref: "User" }, //<---- one-to-one,
-      //   trim: true,
-      //   required: [true, "User name is required 👽  "],
+      type: Schema.Types.ObjectId,
+      ref: "User", //<---- one-to-one,
     },
     nftPrice: {
       type: Number,
@@ -22,6 +21,13 @@ const nftSchema = new Schema(
     nftImage: {
       type: String,
       required: [true, "NFT is required 🇲🇽 ."],
+    },
+    shortDescription: {
+      type: String,
+      required: [true, "Short Description is required 🇲🇽 ."],
+    },
+    nftHashTag: {
+      type: [String],
     },
   },
   { timestamps: true }

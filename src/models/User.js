@@ -23,7 +23,7 @@ const userSchema = new Schema(
     },
     userImage: String,
     userShortBio: String,
-    nft: [{ type: Schema.Types.ObjectId, ref: "Nft" }], //<--- Tiene el ID de cada NFT que crea / one-to-many/ SchemaType is then a configuration object for an individual property.
+    nft: [{ type: Schema.Types.ObjectId, ref: "Nft" }], //<--- Tiene el ID de cada NFT que crea / one-to-many/ SchemaType is then a configuration object for an individual property.
   },
   { timestamps: true }
 );

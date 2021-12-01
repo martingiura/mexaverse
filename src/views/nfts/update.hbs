@@ -1,0 +1,35 @@
+Este es el id: {{data._id}}
+
+<form action="/nfts/{{data._id}}/edit" method="POST">
+    <label>NFT Title</label>
+    <input type="text" name="nftTitle" value="{{data.nftTitle}}" />
+
+    <br />
+
+    <label>NFT Price</label>
+    <textarea type="Number" name="nftPrice">
+		{{data.nftPrice}}
+	</textarea>
+
+    <br />
+
+    <label>NFT Image</label>
+    <input type="String" name="nftImage" value="{{data.nftImage}}" />
+
+    <br />
+
+    <label>Short Description</label>
+    <input type="String" name="shortDescription" value="{{data.shortDescription}}" />
+
+{{#each data}}
+    <label>Hashtags</label>
+    <input type="String" name="nftHashTag" value="{{nftHashTag}}" />
+{{/each}}
+    <br />
+
+    <button>
+        Guardar nuevos cambios
+    </button>
+
+
+</form>
