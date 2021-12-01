@@ -2,6 +2,7 @@
 // Imports
 const express = require("express");
 const app = express();
+const hbs = require("hbs");
 
 require("dotenv/config");
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
+hbs.registerPartials(__dirname + "/views/partials");
 // To use req.body
 app.use(express.urlencoded({ extended: true }));
 

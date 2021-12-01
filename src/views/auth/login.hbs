@@ -1,17 +1,19 @@
 {{!-- Login view --}}
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style="height: calc(100vh - 64px);">
-    <div class="max-w-md w-full space-y-8">
+<div class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 shadow-xl" style="height: calc(100vh - 64px);">
+   <div class="gradientCont max-w-md w-full space-y-8 shadow-xl p-14 rounded-lg">
         <div>
-            <img class="mx-auto h-24 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png"
+            <img class="mx-auto h-24 w-auto" src="/images/mexaverse-logo.png"
                 alt="Workflow">
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
                 Sign in to your account
             </h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
+            <p class="mt-2 text-center text-sm text-white">
                 Or
-                <a href="/auth/signup" class="font-medium text-blue-600 hover:text-blue-500">
+                <a href="/auth/signup" class="text-white hover:bg-green-800 hover:text-gray-50 px-3 py-2 rounded-md block mb-2 text-xl font-black">
                     Sign up
                 </a>
+                <hr>
             </p>
         </div>
         <form class="mt-8 space-y-6" action="/auth/login" method="POST">
@@ -33,10 +35,10 @@
 
             <div>
                 <button type="submit"
-                    class="mt-12 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    class="mt-12 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-900 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-700">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <!-- Heroicon name: solid/lock-closed -->
-                        <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                        <svg class="h-5 w-5 text-green-400 group-hover:text-green-300"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                             aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -52,4 +54,5 @@
             {{/if}}
         </form>
     </div>
+</div>
 </div>
