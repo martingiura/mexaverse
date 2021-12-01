@@ -21,17 +21,17 @@ router.get("/", getAllNfts);
 router.get("/my-nfts", isLoggedIn, getMyNfts);
 
 //-------------Add NFTs------------
-router.get("/:create", viewCreateNft);
+router.get("/create", isLoggedIn, viewCreateNft);
 
-router.post("/:create", createNft);
+router.post("/create", isLoggedIn, createNft);
 
 //-------------Update NFTs-------------
-router.get("/:nftID/edit", viewEditNft);
+router.get("/:nftID/edit", isLoggedIn, viewEditNft);
 
-router.post("/:nftID/edit", editNft);
+router.post("/:nftID/edit", isLoggedIn, editNft);
 
 //-------------Delete NFTs-------------
-router.post("/:nftID/delete", deleteNft);
+router.post("/:nftID/delete", isLoggedIn, deleteNft);
 
 //3. EXPORT
 module.exports = router;

@@ -1,7 +1,7 @@
 {{!-- //--------HBS CREATE.HBS------- --}}
 <h2>Create a new post</h2>
 
-<form action="/post-create" method="POST">
+<form action="create" method="POST">
   <label> NFT Title:
     <input type="text" name="nftTitle" style="border: 20px, solid, black, ;"/>
   </label>
@@ -9,6 +9,10 @@
 
   <label> ImageURL:
     <input type="text" name="nftImage"/>
+  </label>
+    <br>
+   <label> Price:
+    <input type="number" name="nftPrice"/>
   </label>
   <br>
 
@@ -19,6 +23,7 @@
       {{#each data}}
         <option value="{{this._id}}"> {{this.userName}} </option>
       {{/each}}
+     
     </select>
   </label>
   <br>

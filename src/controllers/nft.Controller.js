@@ -58,7 +58,7 @@ exports.createNft = async (req, res) => {
     $push: { nft: newNftCreated._id },
   });
   const algo2 = Nft.find().populate("nftUsername");
-  res.redirect("/nfts"); // if everything is fine, redirect to list of posts
+  res.redirect("/nfts/my-nfts"); // if everything is fine, redirect to list of posts
 };
 
 //-------------------Update NFT-------------------
