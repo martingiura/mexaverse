@@ -1,11 +1,14 @@
+//-------------AUTH.CONTROLLER----------------
 // Import
 const bcryptjs = require("bcryptjs");
 const User = require("./../models/User");
 const mongoose = require("mongoose");
 
 //-----------------SIGNUP---------------------
-exports.getSignup = (req, res) => {
-  res.render("auth/signup");
+exports.getSignup = async (req, res) => {
+  const userID = req.params.userID;
+  const theUser = await User.find(userID);
+  res.render("auth/signup", { dbUsers: theUser });
 };
 
 //-----------------------------POST-----------------------------

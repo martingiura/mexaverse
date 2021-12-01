@@ -1,7 +1,9 @@
+//--------------NFT.ROUTES----------------
 //1. IMPORT
 const router = require("express").Router();
 
 const {
+  getAllNfts,
   getMyNfts,
   viewCreateNft,
   createNft,
@@ -13,12 +15,15 @@ const {
 const { isLoggedIn } = require("./../middlewares");
 
 //2. Routes
-router.get("/nfts", isLoggedIn, getMyNfts);
+//-------------ALL VIEW NFTs------------
+router.get("/", getAllNfts);
+//-------------MY VIEW NFTs------------
+router.get("/my-nfts", isLoggedIn, getMyNfts);
 
 //-------------Add NFTs------------
-router.get("/create", viewCreateNft);
+router.get("/:create", viewCreateNft);
 
-router.post("/create", createNft);
+router.post("/:create", createNft);
 
 //-------------Update NFTs-------------
 router.get("/:nftID/edit", viewEditNft);

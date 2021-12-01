@@ -1,19 +1,17 @@
+//--------NFT.CONTROLLERS-------
 const Nft = require("./../models/Nft");
 const User = require("./../models/User");
 const mongoose = require("mongoose");
 
+//-----------------------VIEW ALL NFTs-------------------
+exports.getAllNfts = (req, res) => {
+  res.render("nfts");
+};
+
 //-----------------------VIEW MY NFTs-------------------
 
-exports.getMyNfts = async (req, res) => {
-  try {
-    const nfts = await Nft.find({});
-    console.log(nfts);
-    res.render("nfts/my-nfts", {
-      myNfts,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+exports.getMyNfts = (req, res) => {
+  res.render("nfts/my-nfts");
 };
 
 //-----------------------VIEW SINGLE NFT-------------------
@@ -30,30 +28,37 @@ exports.getMyNfts = async (req, res) => {
 //-------------------Add a new NFT-------------------
 //-------------------VIEW FORM TO CREATE NFTs-------------------
 exports.viewCreateNft = async (req, res) => {
-  res.render("nfts/create");
+  //llamar al currentUser en view session
+
+  const userID = req.session.currentUser._id;
+  console.log(req.session.currentUser._id);
+  const foundUser = await User.findById(userID);
+  res.render(`nfts/create`, {
+    data: foundUser,
+  });
 };
 
 //-------------------FORM FOR CREATE NFTs-------------------
 exports.createNft = async (req, res) => {
-  console.log(req.body);
-
-  const userName = req.body.userName;
+  const nftUsername = req.body.nftUsername;
   const nftTitle = req.body.nftTitle;
   const nftPrice = req.body.nftPrice;
   const nftImage = req.body.nftImage;
 
+  console.log(nftUsername);
   const newNftCreated = await Nft.create({
-    userName,
+    nftUsername,
     nftTitle,
     nftPrice,
     nftImage,
   });
-
-  console.log(newNftCreated);
-
-  res.redirect("/nfts");
-
-  console.log("NFT creado y listo para vender 🌮 ");
+  // when the new post is created, the user needs to be found and its posts updated with the
+  // ID of newly created post
+  const algo = User.findByIdAndUpdate(nftUsername, {
+    $push: { nft: newNftCreated._id },
+  });
+  const algo2 = Nft.find().populate("nftUsername");
+  res.redirect("/nfts"); // if everything is fine, redirect to list of posts
 };
 
 //-------------------Update NFT-------------------

@@ -1,3 +1,4 @@
+//---------------NFT MODELS---------------
 //IMPORT
 const { Schema, model } = require("mongoose");
 
