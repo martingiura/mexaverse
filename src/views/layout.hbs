@@ -19,7 +19,13 @@
         background: linear-gradient(90deg, #0a7557 0%, #03664a 100%);
       }
       .gradientCont {
-        background: linear-gradient(90deg, rgba(236, 253, 245) 0%, rgba(236, 253, 245) 100%);
+        background: linear-gradient(90deg, #41B493 0%, #41B493 100%);
+      }
+      .gradientCont2{
+        background: linear-gradient(90deg, #ff007b1f 0%, #ff007b1f 100%);
+      }
+      .gradientCont3{
+        background: linear-gradient(90deg, #41B493 0%, #41B493 100%);
       }
     </style>
 {{!-- <script src="node_modules/cloudinary-core/cloudinary-core.js" type="text/javascript"> async></script> --}}
@@ -58,31 +64,31 @@
                     {{#if currentUser}}
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <a href="/" class="bg-green-800 text-gray-50 px-3 py-2 rounded-md block mb-2 text-sm font-black"
+                            <a href="/" style="background-color: #d2458a" class="text-gray-50 px-3 py-2 rounded-md block mb-2 text-sm font-black"
                                 aria-current="page">HOME</a>
 
                             <a href="/nfts"
-                                class="text-white hover:bg-green-800 hover:text-gray-50 px-3 py-2 rounded-md block mb-2 text-sm font-black">NFTS Gallery</a>
+                                class="text-white hover:bg-pink-500 hover:text-gray-50 px-3 py-2 rounded-md block mb-2 text-sm font-black">NFTS Gallery</a>
 
                             <a href="/user/{{currentUser.userName}}"
-                                class="text-white hover:bg-green-800 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">PROFILE</a>
+                                class="text-white hover:bg-pink-500 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">PROFILE</a>
 
                             <a href="/nfts/my-nfts"
-                                class="text-white hover:bg-green-800 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">MY NFTS</a>
+                                class="text-white hover:bg-pink-500 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">MY NFTS</a>
                         </div>
                     </div>
 
                     {{else}}
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <a href="/" class="bg-green-800 text-white px-3 py-2 rounded-md block mb-2 text-sm font-black"
+                            <a href="/" style="background-color: #d2458a" class="text-white px-3 py-2 rounded-md block mb-2 text-sm font-black"
                                 aria-current="page">HOME</a>
 
                             <a href="/auth/login"
-                                class="text-white hover:bg-green-800 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">LOGIN</a>
+                                class="text-white bg-opacity-25 hover:bg-pink-500  hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">LOGIN</a>
 
                             <a href="/auth/signup"
-                                class="text-white hover:bg-green-800 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">SIGNUP</a>
+                                class="text-white hover:bg-pink-500 hover:text-white px-3 py-2 rounded-md block mb-2 text-sm font-black">SIGNUP</a>
                         </div>
                     </div>
                     {{/if}}
