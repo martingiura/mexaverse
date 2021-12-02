@@ -46,6 +46,22 @@ exports.createNft = async (req, res) => {
     const nftImage = req.body.nftImage;
     const shortDescription = req.body.shortDescription;
     const nftHashTag = req.body.nftHashTag;
+    const userID = req.session.currentUser._id;
+    const foundUser = await User.findById(userID);
+    //Validations
+    if (
+      !nftUsername ||
+      !nftTitle ||
+      !nftImage ||
+      !nftPrice ||
+      !shortDescription ||
+      !nftHashTag
+    ) {
+      return res.render(`nfts/create`, {
+        msg: "All fields are required 🚨",
+        data: foundUser,
+      });
+    }
 
     //console.log(nftUsername);
     const newNftCreated = new Nft({
@@ -56,6 +72,7 @@ exports.createNft = async (req, res) => {
       shortDescription,
       nftHashTag,
     });
+
     await newNftCreated.save();
     // when the new post is created, the user needs to be found and its posts updated with the
     // ID of newly created post
@@ -63,22 +80,25 @@ exports.createNft = async (req, res) => {
       $push: { nft: newNftCreated._id },
     });
     const data2 = await Nft.find({ nftUsername }).populate("nftUsername");
-    res.redirect("my-nfts"); // if everything is fine, redirect to list of posts
+    res.redirect("/nfts/my-nfts"); // if everything is fine, redirect to list of posts
   } catch (err) {
     console.log(err);
     res.redirect("/");
   }
 };
-
 //-------------------Update NFT-------------------
 //-------------------VIEW FORM TO Update NFTs-------------------
 
 exports.viewEditNft = async (req, res) => {
-  console.log(req.params);
+  //console.log(req.params);
   const nftID = req.params.nftID;
+  const userID = req.params.userID;
   const foundNft = await Nft.findById(nftID);
+  const foundUser = await User.findById(userID);
   res.render("nfts/update", {
+    //HBS VISTA
     data: foundNft,
+    data2: foundUser,
   });
 };
 
@@ -86,7 +106,9 @@ exports.viewEditNft = async (req, res) => {
 exports.editNft = async (req, res) => {
   // 1. EL ID DEL NFT
   const nftID = req.params.nftID;
-
+  const userID = req.params.userID;
+  const foundNft = await Nft.findById(nftID);
+  //-----------------START DE VALIDACION---------------
   // 2. LOS NUEVOS CAMBIOS DEL FORMULARIO
   const nftUsername = req.body.nftUsername;
   const nftTitle = req.body.nftTitle;
@@ -95,19 +117,43 @@ exports.editNft = async (req, res) => {
   const shortDescription = req.body.shortDescription;
   const nftHashTag = req.body.nftHashTag;
 
-  console.log(nftID);
-  console.log(nftTitle, nftImage, nftPrice);
+  console.log(req.body);
+
+  //Validations
+  if (
+    !nftUsername ||
+    !nftTitle ||
+    !nftImage ||
+    !nftPrice ||
+    !shortDescription ||
+    !nftHashTag
+  ) {
+    return res.render(`nfts/update`, {
+      msg: "Te falto algo 🚨 ",
+      data: foundNft,
+    });
+  }
+
+  //---------------END DE VALIDACION-------------------
+  // console.log(nftID);
+  // console.log(nftTitle, nftImage, nftPrice, nftHashTag, shortDescription);
 
   // 3. REALIZAR LA ACTUALIZACIÓN DE DATOS EN LA BASE DE DATOS
   // findByIdAndUpdate([ID], [NUEVOS CAMBIOS EN OBJETO], [DEVOLVER A LA VARIABLE LA ACTUALIZACIÓN])
   const updatedNft = await Nft.findByIdAndUpdate(
     nftID, // ID DEL DOCUMENTO
-    { nftUsername, nftTitle, nftImage, nftPrice, shortDescription, nftHashTag },
+    {
+      nftUsername,
+      nftTitle,
+      nftImage,
+      nftPrice,
+      shortDescription,
+      nftHashTag,
+    },
     { new: true } // DEVOLVER A LA VARIABLE EL DOCUMENTO ACTUALIZADO
   );
 
   console.log(updatedNft);
-
   res.redirect(`/nfts/my-nfts`);
 };
 
@@ -123,4 +169,13 @@ exports.deleteNft = async (req, res) => {
 
   // 3. REDIRECCIÓN
   res.redirect("/nfts");
+};
+//-----------------------VIEW TO BUY NFTs-----------------------
+exports.viewBuyNft = async (req, res) => {
+  const nftID = req.params.nftID;
+  const foundNft = await Nft.findById(nftID);
+  console.log("nft:", foundNft);
+  res.render("nfts/buy", {
+    dataBuy: foundNft,
+  });
 };

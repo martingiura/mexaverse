@@ -10,6 +10,7 @@ const {
   viewEditNft,
   editNft,
   deleteNft,
+  viewBuyNft,
 } = require("./../controllers/nft.Controller");
 
 const { isLoggedIn } = require("./../middlewares");
@@ -32,6 +33,9 @@ router.post("/:nftID/edit", isLoggedIn, editNft);
 
 //-------------Delete NFTs-------------
 router.post("/:nftID/delete", isLoggedIn, deleteNft);
+
+//-------------BUY NFTs-------------
+router.get("/:nftID/buy", isLoggedIn, viewBuyNft);
 
 //3. EXPORT
 module.exports = router;

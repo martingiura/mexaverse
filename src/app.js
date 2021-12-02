@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 // Home
 app.use("/", require("./routes"));
 
-// // Login y signup
+// // Login y signup y Logout
 app.use("/auth", require("./routes/auth.router"));
 
 // Users

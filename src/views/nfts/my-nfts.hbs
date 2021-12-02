@@ -2,32 +2,10 @@
 
 {{!-- {{#each data}} --}}
 
-{{#each data.nft}}
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <img class="w-full" src="{{nftImage}}" alt="YOUR NFT IMAGE HERE">
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{nftTitle}}</div>
-    <p class="text-gray-700 text-base">
-      {{shortDescription}}
-    </p>
-    <p class="text-gray-700 text-base">
-      User Id: {{nftUsername}}
-    </p>
-    <p class="text-gray-700 text-base">
-      $IHC: {{nftPrice}}.00
-    </p>
-  </div>
-  <div class="px-6 pt-4 pb-2">
-    {{#each this.nftHashTag}}
-    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{this}}</span>
+<span class="flex flex-row flex-wrap inline-block m-14 max-w-sm rounded overflow-hidden shadow-lg">
+<div>
+    {{#each data.nft}}
+        {{> mynftspart this}}
     {{/each}}
-<button class="-mb-4 bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">$BUY</button>
-<form method="POST" action="/nfts/{{this._id}}/delete"> 
-  <button>Borrar</button>
-</form>
-  </div>
-{{/each}}
-
 </div>
- <hr>
- <a href="/nfts/create" style="color:black" class="-mb-4 bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">crea un nft</a>   
+</span>
