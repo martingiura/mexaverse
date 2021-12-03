@@ -19,7 +19,9 @@
       <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#{{this}}</span>
       {{/each}}
         <a href="/nfts/{{_id}}/edit" style="background-color: #d2458a"  class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">EDIT NFT</a>
-        <form  method="POST" action="/nfts/{{this._id}}/delete"> 
+       
+       
+        <form  method="POST" action="/nfts/{{this._id}}/delete" onclick="return confirm('Estas segur@ que quieres eliminar este NFT?');">
           <button style="background-color: #d24589c5"  class="mb-4 text-white text-xs py-2 px-2 rounded-full">ELIMINAR 🗑 </button>
         </form>
     </div>
