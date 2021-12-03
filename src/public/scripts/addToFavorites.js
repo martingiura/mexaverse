@@ -1,17 +1,20 @@
-const favBtn = document.querySelector("#favButton");
-let favIcon = document.querySelector("#favIcon"),
-  count = document.querySelector("#count");
+const Nft = require("./../models/Nft");
+const User = require("./../models/User");
+const mongoose = require("mongoose");
 
+const favBtn = document.querySelector("#favButton");
+let favIcon = document.querySelector("#favIcon");
+
+let favorites = [];
 let clicked = false;
 
 favBtn.addEventListener("click", () => {
   if (!clicked) {
     clicked = true;
-    favIcon.innerHTML = `Si cambia el DOM el boton`;
-    count.textContent++;
+    favIcon.innerHTML = `h-6 w-6 fill-current text-pink-600`;
+    favorites.push();
   } else {
     clicked = false;
-    favIcon.innerHTML = `<i class="far fa-thumbs-up"></i>`;
-    count.textContent--;
+    favIcon.innerHTML = `h-6 w-6 text-pink-600`;
   }
 });
